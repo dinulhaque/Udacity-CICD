@@ -15,9 +15,12 @@ pipeline {
                   sh 'tidy -q -e *.html'
               }
          }
-stage('Security Scan') {
+         stage('Security Scan') {
               steps { 
-                 aquaMicroscanner imageName: 'alpine:latest', notCompleted: 'exit 1', onDisallowed: 'fail'
+                 aquaMicroscanner imageName: 'alpine:latest',
+        notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat:
+        'html'
+
               }
          } 
          }         
