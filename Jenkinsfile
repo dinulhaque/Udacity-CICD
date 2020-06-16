@@ -9,7 +9,7 @@ pipeline{
             stage('Upload to AWS') {
                 steps {
                     retry(3){
-                        withAWS(region:'eu-west-2', credentials:'admin'){
+                        withAWS(region:'eu-west-2', credentials:'Jenkins'){
                         s3Upload(file:'index.html', bucket:'dinuls-cicd-3', path:'')
                     }                             
                 }
